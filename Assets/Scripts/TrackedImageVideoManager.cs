@@ -50,7 +50,7 @@ public class TrackedImageVideoManager : MonoBehaviour
         if (videoPlayer != null)
         {
           VideoClip clip = Resources.Load<VideoClip>(trackedFrameString) as VideoClip;
-          videoPlayer.clip = clip;
+          // videoPlayer.clip = clip;
           videoPlayer.Play();
           Debug.Log("started video");
         }
