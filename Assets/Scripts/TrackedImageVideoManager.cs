@@ -40,13 +40,14 @@ public class TrackedImageVideoManager : MonoBehaviour
       var trackedFrameString = trackedImage.referenceImage.name;
       int trackedFrame = System.Int32.Parse(trackedFrameString.Substring(startIndex: trackedFrameString.Length - 2));
 
-      var videoQuadGO = trackedImage.transform.GetChild(0).gameObject;
+      var videoPlaneParentGO = trackedImage.transform.GetChild(0).gameObject;
+      var videoPlaneGO = videoPlaneParentGO.transform.GetChild(0).gameObject;
 
-      if (!videoQuadGO.activeSelf)
+      if (!videoPlaneGO.activeSelf)
       {
         Debug.Log("started tracking frame " + trackedFrame);
-        videoQuadGO.SetActive(true);
-        var videoPlayer = videoQuadGO.GetComponent<VideoPlayer>();
+        videoPlaneGO.SetActive(true);
+        var videoPlayer = videoPlaneGO.GetComponent<VideoPlayer>();
         if (videoPlayer != null)
         {
           VideoClip clip = Resources.Load<VideoClip>(trackedFrameString) as VideoClip;
@@ -65,14 +66,15 @@ public class TrackedImageVideoManager : MonoBehaviour
   void StopVideo(ARTrackedImage trackedImage)
   {
     // Debug.Log("stopped tracking");
-    var videoQuadGO = trackedImage.transform.GetChild(0).gameObject;
-    var videoPlayer = videoQuadGO.GetComponent<VideoPlayer>();
+    var videoPlaneParentGO = trackedImage.transform.GetChild(0).gameObject;
+    var videoPlaneGO = videoPlaneParentGO.transform.GetChild(0).gameObject;
+    var videoPlayer = videoPlaneGO.GetComponent<VideoPlayer>();
     if (videoPlayer != null)
     {
       videoPlayer.Stop();
       Debug.Log("stopped video");
     }
-    videoQuadGO.SetActive(false);
+    videoPlaneGO.SetActive(false);
   }
 
   void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
