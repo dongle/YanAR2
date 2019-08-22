@@ -17,6 +17,7 @@ public class TrackedImageVideoManager : MonoBehaviour
   ARTrackedImageManager m_TrackedImageManager;
 
   VideoPlayer m_videoPlayer;
+  AudioSource m_audioSource;
 
   [SerializeField]
   RenderTexture m_videoTexture;
@@ -37,7 +38,10 @@ public class TrackedImageVideoManager : MonoBehaviour
   void Awake()
   {
     m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
+    m_audioSource = gameObject.AddComponent<AudioSource>();
     m_videoPlayer = GetComponent<VideoPlayer>();
+    m_videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
+    m_videoPlayer.SetTargetAudioSource(0, m_audioSource);
   }
 
   void OnEnable()
@@ -54,7 +58,7 @@ public class TrackedImageVideoManager : MonoBehaviour
 
   void UpdateVideo(ARTrackedImage trackedImage)
   {
-    if (trackedImage.trackingState == TrackingState.Tracking)
+    if (trackedImage.trackingState != TrackingState.None)
     {
       // The image extents is only valid when the image is being tracked
       trackedImage.transform.localScale = new Vector3(trackedImage.size.x, 1f, trackedImage.size.y);
@@ -95,7 +99,7 @@ public class TrackedImageVideoManager : MonoBehaviour
 
   void StopVideo(ARTrackedImage trackedImage)
   {
-    // Debug.Log("stopped tracking");
+    Debug.Log("stopped tracking");
     var videoPlaneParentGO = trackedImage.transform.GetChild(0).gameObject;
     var videoPlaneGO = videoPlaneParentGO.transform.GetChild(0).gameObject;
     videoPlaneGO.transform.localScale = new Vector3(0.1f, 1f, 0.1f);
