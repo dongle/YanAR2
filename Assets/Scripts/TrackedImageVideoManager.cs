@@ -10,14 +10,18 @@ using UnityEngine.Video;
 /// is displayed on
 /// </summary>
 [RequireComponent(typeof(ARTrackedImageManager))]
+[RequireComponent(typeof(VideoPlayer))]
 
 public class TrackedImageVideoManager : MonoBehaviour
 {
   ARTrackedImageManager m_TrackedImageManager;
 
+  VideoPlayer m_videoPlayer;
+
   void Awake()
   {
     m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
+    m_videoPlayer = GetComponent<VideoPlayer>();
   }
 
   void OnEnable()
@@ -46,15 +50,17 @@ public class TrackedImageVideoManager : MonoBehaviour
       if (!videoPlaneGO.activeSelf)
       {
         Debug.Log("started tracking frame " + trackedFrame);
-        videoPlaneGO.SetActive(true);
-        var videoPlayer = videoPlaneGO.GetComponent<VideoPlayer>();
-        if (videoPlayer != null)
+
+        // double the size of the video plane if it is a video that 'breaks' the frame
+        if (trackedFrame == 2 || trackedFrame == 4 || trackedFrame == 5 || trackedFrame == 6 || trackedFrame == 9 || trackedFrame == 10 || trackedFrame == 12)
         {
-          VideoClip clip = Resources.Load<VideoClip>(trackedFrameString) as VideoClip;
-          // videoPlayer.clip = clip;
-          videoPlayer.Play();
-          Debug.Log("started video");
+          videoPlaneGO.transform.localScale = new Vector3(0.2f, 2f, 0.2f);
         }
+
+        videoPlaneGO.SetActive(true);
+        VideoClip clip = Resources.Load<VideoClip>(trackedFrameString) as VideoClip;
+        m_videoPlayer.clip = clip;
+        m_videoPlayer.Play();
       }
     }
     else
@@ -68,12 +74,9 @@ public class TrackedImageVideoManager : MonoBehaviour
     // Debug.Log("stopped tracking");
     var videoPlaneParentGO = trackedImage.transform.GetChild(0).gameObject;
     var videoPlaneGO = videoPlaneParentGO.transform.GetChild(0).gameObject;
-    var videoPlayer = videoPlaneGO.GetComponent<VideoPlayer>();
-    if (videoPlayer != null)
-    {
-      videoPlayer.Stop();
-      Debug.Log("stopped video");
-    }
+    videoPlaneGO.transform.localScale = new Vector3(0.1f, 1f, 0.1f);
+    m_videoPlayer.Stop();
+    Debug.Log("stopped video");
     videoPlaneGO.SetActive(false);
   }
 

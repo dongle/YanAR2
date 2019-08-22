@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 285729318}
   - component: {fileID: 285729320}
   - component: {fileID: 285729322}
+  - component: {fileID: 285729321}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -192,9 +193,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ReferenceLibrary: {fileID: 11400000, guid: eb119db82243e4f72a3dea16fd5ad0f9, type: 2}
-  m_MaxNumberOfMovingImages: 12
+  m_MaxNumberOfMovingImages: 1
   m_TrackedImagePrefab: {fileID: 6269534828978179582, guid: 51c25bb1ff4e0452eba4bd121bb2f42d,
     type: 3}
+--- !u!328 &285729321
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285729317}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 9d3a6ce31e79e44469a515348732a807, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!114 &285729322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3676c292925b466ea0320ea82d0781f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_clip01: {fileID: 32900000, guid: 2baed8446320848f1bf0bc0c48672264, type: 3}
+  m_clip02: {fileID: 32900000, guid: efc7784cc97cb4f56930d2d09ac8852f, type: 3}
+  m_clip03: {fileID: 32900000, guid: bc3f7508d833e4fc48732c61c9ec5f19, type: 3}
+  m_clip04: {fileID: 32900000, guid: 770bd4b3d9abc417dac49b14594b5139, type: 3}
 --- !u!1 &607889173
 GameObject:
   m_ObjectHideFlags: 0
