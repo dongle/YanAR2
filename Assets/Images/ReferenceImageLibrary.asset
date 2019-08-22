@@ -71,7 +71,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 3782893090576852652
       m_GuidHigh: 14031327546818942811
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame06
     m_Texture: {fileID: 2800000, guid: 271ce6ac8939347f5bd74b0b104ab9c2, type: 3}
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 3778817879201419333
       m_GuidHigh: 5619138434263240603
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame07
     m_Texture: {fileID: 2800000, guid: 10b210450ed734719b4f016ea230fb4d, type: 3}
@@ -91,7 +91,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 3814663688482186468
       m_GuidHigh: 7710273806639036859
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame08
     m_Texture: {fileID: 2800000, guid: e98fe4e4686934f0bbf9b7252d65006b, type: 3}
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 8427004546480612414
       m_GuidHigh: 6465770786166542683
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame09
     m_Texture: {fileID: 2800000, guid: a194243ebbfc74f25b118edc4508bb59, type: 3}
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 17601491083417411196
       m_GuidHigh: 9329139450022657738
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame10
     m_Texture: {fileID: 2800000, guid: 384cde7c0ee2f445cafeaee2e6c27781, type: 3}
@@ -121,7 +121,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 8359827822516958254
       m_GuidHigh: 9932926618155065096
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame11
     m_Texture: {fileID: 2800000, guid: c08cf42e131c7404089f27df21d8d889, type: 3}
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 4962004267658316980
       m_GuidHigh: 14606337249999364683
-    m_Size: {x: 0.111125, y: 0.08583972}
+    m_Size: {x: 0.115, y: 0.08883301}
     m_SpecifySize: 1
     m_Name: Frame12
     m_Texture: {fileID: 2800000, guid: 73bf0cb4949744dc4ba2c4575722b4ca, type: 3}
