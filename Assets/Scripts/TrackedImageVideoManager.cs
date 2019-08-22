@@ -18,6 +18,22 @@ public class TrackedImageVideoManager : MonoBehaviour
 
   VideoPlayer m_videoPlayer;
 
+  [SerializeField]
+  RenderTexture m_videoTexture;
+  public RenderTexture videoTexture
+  {
+    get { return m_videoTexture; }
+    set { m_videoTexture = value; }
+  }
+
+  [SerializeField]
+  Material m_videoMaterial;
+  public Material videoMaterial
+  {
+    get { return m_videoMaterial; }
+    set { m_videoMaterial = value; }
+  }
+
   void Awake()
   {
     m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
@@ -27,11 +43,13 @@ public class TrackedImageVideoManager : MonoBehaviour
   void OnEnable()
   {
     m_TrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+    m_videoPlayer.prepareCompleted += ReadyVideo;
   }
 
   void OnDisable()
   {
     m_TrackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+    m_videoPlayer.prepareCompleted -= ReadyVideo;
   }
 
   void UpdateVideo(ARTrackedImage trackedImage)
@@ -60,13 +78,19 @@ public class TrackedImageVideoManager : MonoBehaviour
         videoPlaneGO.SetActive(true);
         VideoClip clip = Resources.Load<VideoClip>(trackedFrameString) as VideoClip;
         m_videoPlayer.clip = clip;
-        m_videoPlayer.Play();
+        m_videoTexture.Release();
+        m_videoPlayer.Prepare();
       }
     }
     else
     {
       StopVideo(trackedImage);
     }
+  }
+
+  void ReadyVideo(VideoPlayer source)
+  {
+    m_videoPlayer.Play();
   }
 
   void StopVideo(ARTrackedImage trackedImage)
@@ -76,7 +100,7 @@ public class TrackedImageVideoManager : MonoBehaviour
     var videoPlaneGO = videoPlaneParentGO.transform.GetChild(0).gameObject;
     videoPlaneGO.transform.localScale = new Vector3(0.1f, 1f, 0.1f);
     m_videoPlayer.Stop();
-    Debug.Log("stopped video");
+    m_videoTexture.Release();
     videoPlaneGO.SetActive(false);
   }
 
